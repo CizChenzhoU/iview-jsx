@@ -1,7 +1,7 @@
 ### 为啥要用jsx去写，因为iview Table中的render的写法写起来页面太长了。 所以换了个别的思路去实现
 如果使用vue-cli2.0构建的项目,使用jsx需要按 [这里](https://github.com/vuejs/babel-plugin-transform-vue-jsx)的方法引用包,才能使用
     如果使用的vue-cli 3.0构建的,则不需要配置,直接使用即可
-    
+
     另外, 在webstorm中开发时可能会出现eslint语法检查报错的问题
     解决办法：在script标签上添加 type='text/jsx', 如下：
 ```
@@ -153,10 +153,6 @@ render: (h, params) => {
 ```
 [git地址](https://github.com/jiabinbin/iview-jsx)
 
-最后效果图
-
-![](https://user-gold-cdn.xitu.io/2018/11/1/166cda8a0cc1896b?w=1758&h=516&f=png&s=55876)
-
 以上就是具体的实现过程，
 第一次写这种如果有不对的直接指出，非常感谢
-    
+
