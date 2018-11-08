@@ -240,17 +240,17 @@
        */
       getList () {
         let data = []
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
           let leves = ['A', 'B', 'C', 'D', 'E', 'F'] // 对应二级表头ABCDEF中的某一列的值
           let stashArr = []
           for (let j = 0; j < leves.length; j++) {
             let rIndex = Math.floor(Math.random() * leves.length) // 随机一列中有值
             stashArr.push({
               spec: leves[rIndex],
-              t1: '' + rIndex,
-              t2: '' + rIndex,
-              t3: '' + rIndex,
-              t4: '' + rIndex
+              t1: Math.floor(Math.random() * 100),
+              t2: Math.floor(Math.random() * 100),
+              t3: Math.floor(Math.random() * 100),
+              t4: Math.floor(Math.random() * 100)
             })
           }
           // 去重
