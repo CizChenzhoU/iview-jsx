@@ -14,7 +14,7 @@
 
 <script type="text/jsx">
   export default {
-    name: 'update-price',
+    name: 'jsx-table-head',
     data () {
       return {
         tableChild: [
