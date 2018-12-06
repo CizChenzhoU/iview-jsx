@@ -6,6 +6,7 @@
         <div style="text-align: right;">
           <Button type="primary" size="default">添加</Button>
           <Button type="primary" size="default" to="head" style="margin-left: 10px;">header</Button>
+          <Button type="primary" size="default" to="modal" style="margin-left: 10px;">modal</Button>
         </div>
         <Table style="margin-top: 10px;" :columns="tableTitle" :data="data"></Table>
       </Card>

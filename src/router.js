@@ -15,6 +15,10 @@ export default new Router({
       path: '/head',
       name: 'head',
       component: () => import('@/views/jsx-table-head.vue')
+    }, {
+      path: '/modal',
+      name: 'modal',
+      component: () => import('@/views/jsx-modal.vue')
     }
   ]
 })
