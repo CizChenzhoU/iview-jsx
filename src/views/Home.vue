@@ -9,6 +9,7 @@
           <Button type="primary" size="default" to="modal" style="margin-left: 10px;">modal</Button>
         </div>
         <Table style="margin-top: 10px;" :columns="tableTitle" :data="data"></Table>
+        <Button style="margin-top: 15px;" type="warning" size="default" @click="getAllDataHandler">获取所有数据</Button>
       </Card>
     </Col>
   </Row>
@@ -55,18 +56,13 @@
               // 如果是定义在render中。则可以 nativeOnClick={btnClickHandler}
               // bind的使用是何证这我们绑定的函数在运行时this的指向是当前的实例，这样我们可以在这个方法中使用 data 中的数据
               // 类似 react 中的 this.methodXXX.bind(this)
-              let btns = [1, 2, 3, 4].map((item) => {
-                return <i-button type="primary" size="small" nativeOnClick={this.btnClickHandler.bind(this, params.row, item)}>Btn-{item}</i-button>
-              }, this)
-              // 第二中写法 map回调中不传this
-              /*
-              let that = this
-              let btns = [1, 2, 3, 4].map(item => {
-                return <i-button type="primary" size="small" nativeOnClick={that.btnClickHandler.bind(that, params.row, item)}>Btn-{item}</i-button>
-              })
-              */
               return <div style="display:flex;flexDirection:row;justifyContent:space-around;alignItems:center;">
-                {btns}
+                {
+                  [1, 2, 3, 4].map((item) => {
+                    return <i-button type="primary" size="small"
+                                     nativeOnClick={this.btnClickHandler.bind(this, params.row, item)}>Btn-{item}</i-button>
+                  })
+                }
               </div>
             }
           }
@@ -97,12 +93,15 @@
        * 实现双向绑定
        * @param params 当然列的数据 params.row 就是当前列
        * @param key 当然列要绑定的属性名称
-       * @param e Dom event对象
+       * @param e eventInput对象
        */
       modelHandler (params, key, e) {
         let v = e.target.value
-        console.log(params)
-        params.row[key] = v
+        let { index, row } = params
+        // params.row[key] = v // 可以改变当前行数据，但是获取this.data访问所有数据时，数据没有发生改变 所以用下面的方法
+        row[key] = v
+        this.data[index] = row // 直接改变当前行 这样可以this.data中的数据就会发生改变
+        // 另外，data本身是一个数组，如果更复杂的情况要对象中要新增属性的时候，需要使用$set来添加数据，从而触发渲染。
       },
       /**
        * iview 对select组件提供的on-change
@@ -120,6 +119,9 @@
        */
       btnClickHandler (row, v) {
         console.log(row, v)
+      },
+      getAllDataHandler () {
+        console.log(this.data)
       }
     }
   }
