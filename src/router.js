@@ -19,6 +19,10 @@ export default new Router({
       path: '/modal',
       name: 'modal',
       component: () => import('@/views/jsx-modal.vue')
+    }, {
+      path: '/test',
+      name: 'test',
+      component: () => import('@/views/test.vue')
     }
   ]
 })
